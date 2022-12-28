@@ -6,7 +6,8 @@
 
 using namespace std;
 
-ostream& operator<< (ostream& out, const vector<int>& vi) {
+template <typename T>
+ostream& operator<< (ostream& out, const vector<T>& vi) {
     for (const auto& i : vi) {
         out << i << ' ';
     }
@@ -16,5 +17,7 @@ ostream& operator<< (ostream& out, const vector<int>& vi) {
 int main() {
     vector<int> vi = {1, 2, 3};
     cout << vi << endl;
+    vector<double> vd = {1.5, 3, 4.5};
+    cout << vd << endl;
     return 0;
 }
