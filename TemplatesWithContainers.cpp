@@ -44,15 +44,30 @@ ostream& operator<< (ostream& out, const map<Key, Value>& m) {
     return out << '{' << Join(m, ',') << '}';
 }
 
+// Случай когда компилятор не знает какой тип использовать
+template <typename T>
+T Max(T a, T b) {
+    if (b < a) {
+        return a;
+    }
+    return b;
+}
+
 int main() {
     vector<int> vi = {1, 2, 3};
-    cout << vi << endl;
+    cout << vi << endl; // [1,2,3]
     vector<double> vd = {1.5, 3, 4.5};
-    cout << vd << endl;
+    cout << vd << endl; // [1.5,3,4.5]
     vector<vector<int>> vv = {{1,2,3}, {3,2,1}};
-    cout << vv << endl;
+    cout << vv << endl; // [[1,2,3],[3,2,1]]
 
     map<int, int> m = {{1, 2}, {3, 4}};
-    cout << m << endl;
+    cout << m << endl; // {(1,2),(3,4)}
+
+    // Случай когда компилятор не знает какой тип использовать
+    // cout << Max(2, 3.5) << endl; // тут естественно компилятор ругнется, так как мы используем разные типы
+    // в этом случае нужно подсказать компилятору, то есть нужно явным образом указать тип
+    cout << Max<int>(2, 4.7) << endl; // 4
+
     return 0;
 }
