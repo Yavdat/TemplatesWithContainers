@@ -36,12 +36,12 @@ ostream& operator<< (ostream& out, const pair<First, Second>& p) {
 }
 
 template <typename Key, typename Value>
-ostream& operator<< (ostream& out, const map<Key, Value>& vi) {
-    // for (const auto& i : vi) {
+ostream& operator<< (ostream& out, const map<Key, Value>& m) {
+    // for (const auto& i : m) {
     //     out << i << ',';
     // }
     // return out;
-    return out << Join(vi, ',');
+    return out << Join(m, ',');
 }
 
 int main() {
