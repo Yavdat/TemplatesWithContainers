@@ -6,12 +6,27 @@
 
 using namespace std;
 
+template <typename Collection>
+string Join(const Collection& c, char d) {
+    stringstream ss;
+    bool first = true; // выводим первый элемент или нет
+    for (const auto& i : c) {
+        if (!first) {
+            ss << d; // если мы выводим не первый элемент, то в наш поток мы кладем разделитель
+        }
+        first = false;
+        ss << i;
+    }
+    return ss.str();
+}
+
 template <typename T>
 ostream& operator<< (ostream& out, const vector<T>& vi) {
-    for (const auto& i : vi) {
-        out << i << ' ';
-    }
-    return out;
+    // for (const auto& i : vi) {
+    //     out << i << ',';
+    // }
+    // return out;
+    return out << Join(vi, ',');
 }
 
 template <typename First, typename Second>
@@ -22,10 +37,11 @@ ostream& operator<< (ostream& out, const pair<First, Second>& p) {
 
 template <typename Key, typename Value>
 ostream& operator<< (ostream& out, const map<Key, Value>& vi) {
-    for (const auto& i : vi) {
-        out << i << ' ';
-    }
-    return out;
+    // for (const auto& i : vi) {
+    //     out << i << ',';
+    // }
+    // return out;
+    return out << Join(vi, ',');
 }
 
 int main() {
